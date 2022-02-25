@@ -5,6 +5,7 @@ import java.util.Arrays;
 class TwoPointer {
 	/*
 	 * This is the solution to the two sum problem
+	 * Time complexity - O(nlogn)
 	 */
 	public int[] twoSum(int[] nums, int target) {
 		// TODO Auto-generated method stub
