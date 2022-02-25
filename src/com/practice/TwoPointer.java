@@ -1,6 +1,8 @@
 package com.practice;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 class TwoPointer {
 	/*
@@ -32,4 +34,22 @@ class TwoPointer {
 		}
 		return new int[0];
 	}
+	
+	public int[] twoSumHash(int[] nums, int target) {
+		
+		Set<Integer> set = new HashSet<>();
+		
+		for(Integer n : nums) {
+			int potentialMatch = target  - n;
+			if(!set.contains(potentialMatch)) {
+				set.add(n);
+			}
+			else {
+				return new int[] {potentialMatch,n};
+			}
+		}
+		return new int[0];
+	}
+	
+	
 }
