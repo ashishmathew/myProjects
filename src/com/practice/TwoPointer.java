@@ -6,6 +6,7 @@ class TwoPointer {
 	/*
 	 * This is the solution to the two sum problem
 	 * Time complexity - O(nlogn)
+	 * Space complexity - O(n)
 	 */
 	public int[] twoSum(int[] nums, int target) {
 		// TODO Auto-generated method stub
