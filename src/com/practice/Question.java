@@ -9,7 +9,9 @@ public class Question {
 		 * Use this space for two pointer problems
 		 */
 		TwoPointer ans = new TwoPointer();
-		System.out.println("The two numbers are :" + Arrays.toString(ans.twoSum(new int[] { -3, 8, -8, 4, 3 }, 7)));
+		//System.out.println("The two numbers are :" + Arrays.toString(ans.twoSum(new int[] { -3, 8, -8, 4, 3 }, 7)));
+		System.out.println("The two numbers are :" + Arrays.toString(ans.twoSumHash(new int[] { -3, 8, -8, 4, 3 }, 7)));
+		
 		
 		/*
 		 * Use this space for Heap Problems
