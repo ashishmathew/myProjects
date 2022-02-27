@@ -50,6 +50,4 @@ class TwoPointer {
 		}
 		return new int[0];
 	}
-	
-	
 }
