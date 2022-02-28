@@ -31,18 +31,19 @@ public class Question {
 
 		// Sliding window median
 
-		SlidingWindowMedian median = new SlidingWindowMedian();
-		double[] result = median.slidingWindowMedian(new int[] { 1, 2, -1, 3, 5 }, 2);
-		for (double i : result) {
-			System.out.println(i + " ");
-		}
-		System.out.println();
-
-		median = new SlidingWindowMedian();
-		result = median.slidingWindowMedian(new int[] { 1, 2, -1, 3, 5 }, 3);
-		for (double i : result) {
-			System.out.println(i + " ");
-		}
+		/*
+		 * SlidingWindowMedian median = new SlidingWindowMedian(); double[] result =
+		 * median.slidingWindowMedian(new int[] { 1, 2, -1, 3, 5 }, 2); for (double i :
+		 * result) { System.out.println(i + " "); } System.out.println();
+		 * 
+		 * median = new SlidingWindowMedian(); result = median.slidingWindowMedian(new
+		 * int[] { 1, 2, -1, 3, 5 }, 3); for (double i : result) { System.out.println(i
+		 * + " "); }
+		 */
+		
+		MaximizeCapital maxCapital = new MaximizeCapital();
+		System.out.println("The max profit is " + maxCapital.findMaximumCapital(new int[]{0,1,2}, new int[] {1,2,3}, 2, 1) );
+		System.out.println("The max profit is " + maxCapital.findMaximumCapital(new int[]{0,1,2,3}, new int[] {1,2,3,5}, 3, 0) );
 
 	}
 
