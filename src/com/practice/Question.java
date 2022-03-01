@@ -1,6 +1,8 @@
 package com.practice;
 
 import java.util.Arrays;
+import java.util.PriorityQueue;
+
 
 public class Question {
 
@@ -41,10 +43,36 @@ public class Question {
 		 * + " "); }
 		 */
 		
-		MaximizeCapital maxCapital = new MaximizeCapital();
-		System.out.println("The max profit is " + maxCapital.findMaximumCapital(new int[]{0,1,2}, new int[] {1,2,3}, 2, 1) );
-		System.out.println("The max profit is " + maxCapital.findMaximumCapital(new int[]{0,1,2,3}, new int[] {1,2,3,5}, 3, 0) );
+		/*
+		 * Maximize capital
+		 */
+		
+		/*
+		 * MaximizeCapital maxCapital = new MaximizeCapital();
+		 * System.out.println("The max profit is " + maxCapital.findMaximumCapital(new
+		 * int[]{0,1,2}, new int[] {1,2,3}, 2, 1) );
+		 * System.out.println("The max profit is " + maxCapital.findMaximumCapital(new
+		 * int[]{0,1,2,3}, new int[] {1,2,3,5}, 3, 0) );
+		 */
+		
+		NextInterval nextInterval = new NextInterval();
+		Interval[] intervals = new Interval[] {new Interval(2,3),new Interval(3,4),new Interval(5,6)};
+		int[] result = nextInterval.findNextIntervals(intervals);
+		print(result);
+		
+		intervals = new Interval[] {new Interval(3,4),new Interval(1,5),new Interval(4,6)};
+		result = nextInterval.findNextIntervals(intervals);
+		print(result);
 
+	}
+	
+	public static void print(int[] result) {
+		System.out.print("The indices are [");
+		for(Integer nextIntervalIndex : result) {
+			System.out.print(" " + nextIntervalIndex);
+		}
+		System.out.print(" ]");
+		System.out.println();
 	}
 
 }

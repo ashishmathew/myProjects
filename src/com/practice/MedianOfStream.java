@@ -141,3 +141,54 @@ class MaximizeCapital {
 	}
 
 }
+
+class Interval {
+	int start;
+	int end;
+
+	public Interval(int start, int end) {
+		this.start = start;
+		this.end = end;
+	}
+}
+
+class NextInterval {
+
+	public int[] findNextIntervals(Interval[] intervals) {
+		/*
+		 * Input: Intervals [[2,3], [3,4], [5,6]] Output: [1, 2, -1] maxEndTime[]
+		 * maxStartTime[]
+		 */
+		int[] result = new int[intervals.length];
+		int n = intervals.length;
+		PriorityQueue<Integer> maxEndTime = new PriorityQueue<Integer>(n,
+				(i1, i2) -> intervals[i2].end - intervals[i1].end);
+		PriorityQueue<Integer> maxStartTime = new PriorityQueue<Integer>(n,
+				(i1, i2) -> intervals[i2].start - intervals[i1].start);
+		/*
+		 * intervals = [2,3], [3,4], [5,6] maxEndTime[] = [2 1 0] maxStartTime[] = [2 1
+		 * 0]
+		 */
+
+		for (int i = 0; i < n; i++) {
+			maxEndTime.offer(i);
+			maxStartTime.offer(i);
+		}
+
+		for (int i = 0; i < n; i++) {
+			int topEnd = maxEndTime.poll();
+			result[topEnd] = -1; // this is the initial default interval
+
+			if (intervals[maxStartTime.peek()].start >= intervals[topEnd].end) {
+				int topStart = maxStartTime.poll();
+
+				while (!maxStartTime.isEmpty() & intervals[maxStartTime.peek()].start >= intervals[topEnd].end)
+					topStart = maxStartTime.poll();
+
+				result[topEnd] = topStart;
+				maxStartTime.offer(topStart);
+			}
+		}
+		return result;
+	}
+}
