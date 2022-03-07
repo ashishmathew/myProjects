@@ -1,11 +1,46 @@
 package com.practice;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.PriorityQueue;
-
 
 public class Question {
 
+	public static int sum = 0;
+
+	public static String upcase(String s) {
+		return s.toUpperCase();
+	}
+
+	public static void reverse(int n) {
+		// 1342 => 2431
+		if (n == 0)
+			return;
+		int remainder = n % 10;
+		sum = sum * 10 + remainder;
+		reverse(n / 10);
+	}
+
+	public static int reverse1(int n) {
+		// 1234
+		int digits = (int) Math.log10(n) + 1;
+		return helper(n, digits);
+
+	}
+
+	public static int helper(int n, int digits) {
+		// TODO Auto-generated method stub
+		if (n % 10 == n)
+			return n;
+		int remainder = n % 10;
+		n = n / 10;
+		return remainder * (int) Math.pow(10, digits - 1) + helper(n, digits - 1);
+	}
+
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		/*
@@ -42,11 +77,11 @@ public class Question {
 		 * int[] { 1, 2, -1, 3, 5 }, 3); for (double i : result) { System.out.println(i
 		 * + " "); }
 		 */
-		
+
 		/*
 		 * Maximize capital
 		 */
-		
+
 		/*
 		 * MaximizeCapital maxCapital = new MaximizeCapital();
 		 * System.out.println("The max profit is " + maxCapital.findMaximumCapital(new
@@ -54,21 +89,69 @@ public class Question {
 		 * System.out.println("The max profit is " + maxCapital.findMaximumCapital(new
 		 * int[]{0,1,2,3}, new int[] {1,2,3,5}, 3, 0) );
 		 */
-		
-		NextInterval nextInterval = new NextInterval();
-		Interval[] intervals = new Interval[] {new Interval(2,3),new Interval(3,4),new Interval(5,6)};
-		int[] result = nextInterval.findNextIntervals(intervals);
-		print(result);
-		
-		intervals = new Interval[] {new Interval(3,4),new Interval(1,5),new Interval(4,6)};
-		result = nextInterval.findNextIntervals(intervals);
-		print(result);
+
+		/*
+		 * NextInterval nextInterval = new NextInterval(); Interval[] intervals = new
+		 * Interval[] {new Interval(2,3),new Interval(3,4),new Interval(5,6)}; int[]
+		 * result = nextInterval.findNextIntervals(intervals); print(result);
+		 * 
+		 * intervals = new Interval[] {new Interval(3,4),new Interval(1,5),new
+		 * Interval(4,6)}; result = nextInterval.findNextIntervals(intervals);
+		 * print(result);
+		 */
+
+		/*
+		 * Use this for Subset problems
+		 */
+
+		// find subsets
+		/*
+		 * Subset subset = new Subset(); List<List<Integer>> subsets =
+		 * subset.findSubsets(new int[] {1,5,3});
+		 * 
+		 * System.out.println(subsets);
+		 */
+
+		/*
+		 * Strings
+		 */
+//		String q = "howdy";
+//		String qq = new String("howdy1");
+//		System.out.println(q==qq);
+//		
+		/*
+		 * Recursion
+		 */
+
+		Recursion recursion = new Recursion();
+//		System.out.println(recursion.factorial(5));
+		// System.out.println(recursion.sumOfDigits(1342));
+		/*
+		 * reverse(1342); System.out.println(sum);
+		 */
+		// System.out.println(isIntPalindrome(1234321));
+		// System.out.println(recursion.countZeros(100006));
+		// System.out.println(recursion.numberOfSteps(123));
+		// System.out.println(recursion.isArraySorted(new int[] {1,2,3,4,5}));
+		// System.out.println(recursion.isTargetPresent(new int[] {1,2,3,4,5},3));
+		/*
+		 * List<Integer> list = recursion.findTargetIndexes(new int[] {1,2,4,4,5},4);
+		 * System.out.println(list);
+		 */
+
+		List<Integer> list = recursion.findTargetIndexesListInBody(new int[] { 1, 2, 4, 4, 5 }, 4);
+		System.out.println(list);
 
 	}
-	
+
+	public static boolean isIntPalindrome(int n) {
+		return n == reverse1(n);
+
+	}
+
 	public static void print(int[] result) {
 		System.out.print("The indices are [");
-		for(Integer nextIntervalIndex : result) {
+		for (Integer nextIntervalIndex : result) {
 			System.out.print(" " + nextIntervalIndex);
 		}
 		System.out.print(" ]");

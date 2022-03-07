@@ -191,4 +191,5 @@ class NextInterval {
 		}
 		return result;
 	}
+
 }
