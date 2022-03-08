@@ -111,6 +111,16 @@ public class Question {
 		 * 
 		 * System.out.println(subsets);
 		 */
+		
+		 Subset subset = new Subset();
+		// subset.findSubsequence("", "abc");
+		/*
+		 * List<String> list = subset.findSubsequenceArray("", "abc");
+		 * System.out.println(list);
+		 */
+		 
+		 List<String> list = subset.findSubsequenceArrayInside("", "abc");
+		 System.out.println(list);
 
 		/*
 		 * Strings
@@ -123,7 +133,7 @@ public class Question {
 		 * Recursion
 		 */
 
-		Recursion recursion = new Recursion();
+		//Recursion recursion = new Recursion();
 //		System.out.println(recursion.factorial(5));
 		// System.out.println(recursion.sumOfDigits(1342));
 		/*
@@ -143,10 +153,10 @@ public class Question {
 		 * List<Integer> list = recursion.findTargetIndexesListInBody(new int[] { 1, 2,
 		 * 4, 4, 5 }, 4); System.out.println(list);
 		 */
-		
-		//System.out.println(recursion.skipStringAndReturn("bacacad"));
-		//System.out.println(recursion.skipApple("badappmappleand"));
-		System.out.println(recursion.skipAppNotApple("badappmappleand"));
+
+		// System.out.println(recursion.skipStringAndReturn("bacacad"));
+		// System.out.println(recursion.skipApple("badappmappleand"));
+		//System.out.println(recursion.skipAppNotApple("badappmappleand"));
 	}
 
 	public static boolean isIntPalindrome(int n) {

@@ -43,4 +43,52 @@ public class Subset {
 		return result;
 	}
 
+	// abc
+	public void findSubsequence(String p, String up) {
+
+		if (up.isEmpty()) {
+			System.out.println(p);
+			return;
+		}
+
+		char ch = up.charAt(0);
+		findSubsequence(p + ch, up.substring(1));
+		findSubsequence(p, up.substring(1));
+
+	}
+
+	public List<String> findSubsequenceArray(String p, String up) {
+		List<String> list = new ArrayList<String>();
+		return helperFindSubsequenceArray(p, up, list);
+	}
+
+	public List<String> helperFindSubsequenceArray(String p, String up, List<String> list) {
+		// TODO Auto-generated method stub
+
+		if (up.isEmpty()) {
+			return list;
+		}
+
+		char ch = up.charAt(0);
+		list.add(p + ch);
+		helperFindSubsequenceArray(p + ch, up.substring(1), list);
+		helperFindSubsequenceArray(p, up.substring(1), list);
+		return list;
+
+	}
+
+	public List<String> findSubsequenceArrayInside(String p, String up) {
+		if (up.isEmpty()) {
+			List<String> list = new ArrayList<String>();
+			list.add(p);
+			return list;
+		}
+
+		char ch = up.charAt(0);
+		List<String> left = findSubsequenceArrayInside(p + ch, up.substring(1));
+		List<String> right = findSubsequenceArrayInside(p, up.substring(1));
+		left.addAll(right);
+		return left;
+	}
+
 }
