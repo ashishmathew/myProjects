@@ -139,9 +139,14 @@ public class Question {
 		 * System.out.println(list);
 		 */
 
-		List<Integer> list = recursion.findTargetIndexesListInBody(new int[] { 1, 2, 4, 4, 5 }, 4);
-		System.out.println(list);
-
+		/*
+		 * List<Integer> list = recursion.findTargetIndexesListInBody(new int[] { 1, 2,
+		 * 4, 4, 5 }, 4); System.out.println(list);
+		 */
+		
+		//System.out.println(recursion.skipStringAndReturn("bacacad"));
+		//System.out.println(recursion.skipApple("badappmappleand"));
+		System.out.println(recursion.skipAppNotApple("badappmappleand"));
 	}
 
 	public static boolean isIntPalindrome(int n) {

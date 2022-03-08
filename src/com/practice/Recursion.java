@@ -128,22 +128,94 @@ public class Recursion {
 
 	public List<Integer> helperFindTargetIndexesListInBody(int[] nums, int target, int i) {
 		// TODO Auto-generated method stub
-		
+
 		List<Integer> list = new ArrayList<Integer>();
-		
-		if(i == nums.length)
+
+		if (i == nums.length)
 			return list;
-		
-		if(nums[i] == target)
-			list.add(i);//[3]
-		
-		
-		List<Integer> ansFromBelowCall = helperFindTargetIndexesListInBody(nums,target, i+1);
-		//[4]
+
+		if (nums[i] == target)
+			list.add(i);// [3]
+
+		List<Integer> ansFromBelowCall = helperFindTargetIndexesListInBody(nums, target, i + 1);
+		// [4]
 		list.addAll(ansFromBelowCall);
-		
+
 		return list;
+
+	}
+
+	/*
+	 * assumption we are skipping a
+	 */
+	public void skip(String str) {
+		helperSkip(str, "");
+	}
+
+	// baccad
+	public void helperSkip(String unprocessed, String processed) {
+
+		if (unprocessed.isEmpty()) {
+			System.out.println(processed);
+			return;
+		}
+
+		char ch = unprocessed.charAt(0);
+
+		if (ch == 'a') {
+			helperSkip(unprocessed.substring(1), processed);
+		} else {
+			helperSkip(unprocessed.substring(1), processed + ch);
+		}
+
+	}
+
+	public String skipStringAndReturn(String str) {
+		return helperSkipStringAndReturn(str);
+	}
+
+	public String helperSkipStringAndReturn(String unprocessed) {
+		// base
+		if (unprocessed.isEmpty()) {
+			return "";
+		}
+
+		char ch = unprocessed.charAt(0);
+		if (ch == 'a')
+			return helperSkipStringAndReturn(unprocessed.substring(1));
+
+		else
+
+			return ch + helperSkipStringAndReturn(unprocessed.substring(1));
+
+	}
+
+	public String skipApple(String str) {
+		if (str.isEmpty())
+			return "";
+
+		char ch = str.charAt(0);
+
+		if (str.startsWith("apple"))
+			return skipApple(str.substring(5));
+
+		return ch + skipApple(str.substring(1));
+
+	}
+	
+	public String skipAppNotApple(String str) {
 		
+		if (str.isEmpty())
+			return "";
+
+		char ch = str.charAt(0);
+
+		//badappmappleand
+		if (str.startsWith("app") && !str.startsWith("apple"))
+			return skipAppNotApple(str.substring(3));
+
+		return ch + skipAppNotApple(str.substring(1));
+
 	}
 
 }
