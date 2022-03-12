@@ -105,23 +105,37 @@ public class Question {
 		 */
 
 		// find subsets
+		
+		Revision revision = new Revision();
+		/*
+		 * List<List<Integer>> list = revision.subset(new int[] {1,2,3});
+		 * System.out.println(list);
+		 */
+		
+		
+		List<List<Integer>> list = revision.subsetDuplicate(new int[] {1,2,2});
+		System.out.println(list);
+		
 		/*
 		 * Subset subset = new Subset(); List<List<Integer>> subsets =
-		 * subset.findSubsets(new int[] {1,5,3});
+		 * subset.findSubsetDuplicate(new int[] {1,2,2});
 		 * 
 		 * System.out.println(subsets);
 		 */
 		
-		 Subset subset = new Subset();
 		// subset.findSubsequence("", "abc");
 		/*
 		 * List<String> list = subset.findSubsequenceArray("", "abc");
 		 * System.out.println(list);
 		 */
 		 
-		 List<String> list = subset.findSubsequenceArrayInside("", "abc");
-		 System.out.println(list);
-
+		 //subset.findSubsequenceAscii("", "abc");
+		
+			/*
+			 * Subset subset = new Subset(); subset.findPermutations("", "abc");
+			 */
+		
+		
 		/*
 		 * Strings
 		 */
@@ -132,7 +146,21 @@ public class Question {
 		/*
 		 * Recursion
 		 */
-
+		
+		
+		//Revision revision = new Revision();
+		/*
+		 * String str = revision.skipApple("MyappleisaappleString");
+		 * System.out.println(str);
+		 */
+		
+		//revision.subsequence("abc", "");
+		 
+		//revision.subsequenceArray("abc", "", list);
+		/*
+		 * List<String> list = revision.subsequenceArrayBody("abc", "");
+		 * System.out.println(list);
+		 */
 		//Recursion recursion = new Recursion();
 //		System.out.println(recursion.factorial(5));
 		// System.out.println(recursion.sumOfDigits(1342));
