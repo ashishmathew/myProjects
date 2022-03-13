@@ -2,8 +2,10 @@ package com.practice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class Question {
 
@@ -106,15 +108,33 @@ public class Question {
 
 		// find subsets
 		
-		Revision revision = new Revision();
+		//Revision revision = new Revision();
 		/*
 		 * List<List<Integer>> list = revision.subset(new int[] {1,2,3});
 		 * System.out.println(list);
 		 */
 		
 		
-		List<List<Integer>> list = revision.subsetDuplicate(new int[] {1,2,2});
-		System.out.println(list);
+		/*
+		 * List<List<Integer>> list = revision.subsetDuplicate(new int[] {1,2,2});
+		 * System.out.println(list);
+		 */
+		//revision.permutations("abc", "");
+		
+		
+		/*
+		 * List<String> list = revision.permutationsArrayInBody("abc", "");
+		 * System.out.println(list);
+		 */
+		
+		Subset subset = new Subset();
+		List<List<Integer>> list = subset.findPermutationIntegerRecursion(new int[] {1,3,5});
+
+		for(List<Integer> list1 : list) {
+			System.out.println(list1);
+		}
+
+		
 		
 		/*
 		 * Subset subset = new Subset(); List<List<Integer>> subsets =

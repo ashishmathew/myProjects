@@ -2,7 +2,9 @@ package com.practice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class Subset {
 
@@ -164,7 +166,54 @@ public class Subset {
 		}
 
 	}
-	
-	//public List<List<Integer>> findPermutationsArray(String p, String up) {}
+
+	// [1 2 3]
+
+	public List<List<Integer>> findPermutationInteger(int[] nums) {
+		List<List<Integer>> result = new ArrayList<List<Integer>>();// [3 2 1] [2 3 1][2 1 3][3 1 2][1 3 2][1 2 3]
+		Queue<List<Integer>> permutations = new LinkedList<>();//
+		permutations.add(new ArrayList<Integer>());
+		for (Integer currentNum : nums) {// 2
+			int n = permutations.size();
+			for (int i = 0; i < n; i++) {
+				List<Integer> oldPermutation = permutations.poll();// [1 2]
+				for (int j = 0; j <= oldPermutation.size(); j++) {
+					List<Integer> newPermutation = new ArrayList<Integer>(oldPermutation);// [1 2]
+					newPermutation.add(j, currentNum);// [1]
+					if (newPermutation.size() == nums.length)
+						result.add(newPermutation);
+					else
+						permutations.add(newPermutation);
+				}
+
+			}
+		}
+		return result;
+	}
+
+	public List<List<Integer>> findPermutationIntegerRecursion(int[] nums) {
+		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		generatePermutation(nums, 0, result, new ArrayList<>());
+		return result;
+	}
+
+	public void generatePermutation(int[] nums, int index, List<List<Integer>> result,
+			List<Integer> currentPermutation) {
+		// TODO Auto-generated method stub
+
+		if (index == nums.length) {
+			result.add(currentPermutation);//[3 2 1] [2 3 1]
+
+		} else {
+			for (int i = 0; i <= currentPermutation.size(); i++) {
+				List<Integer> newPermutation = new ArrayList<Integer>(currentPermutation);// [2 1]
+				newPermutation.add(i,nums[index]);// [2 3 1]
+				generatePermutation(nums, index + 1, result, newPermutation);
+
+			}
+
+		}
+
+	}
 
 }

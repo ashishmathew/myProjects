@@ -133,16 +133,15 @@ public class Revision {
 
 	public List<List<Integer>> subsetDuplicate(int[] nums) {
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
-        Arrays.sort(nums);
-		//result
-		//[]
-		//[1]
-		//[2]---------------------------s,e
-		//[1 2]
-		//[2 2]
-		//[1 2 2]
-		
-		
+		Arrays.sort(nums);
+		// result
+		// []
+		// [1]
+		// [2]---------------------------s,e
+		// [1 2]
+		// [2 2]
+		// [1 2 2]
+
 		int start = 0, end = 0;
 
 		result.add(new ArrayList<Integer>());
@@ -152,11 +151,11 @@ public class Revision {
 
 			if (i > 0 && nums[i] == nums[i - 1])
 				start = end + 1;
-			
-			end = result.size() - 1;//1
-			
-			int n = result.size();//2
-			
+
+			end = result.size() - 1;// 1
+
+			int n = result.size();// 2
+
 			for (int j = start; j < n; j++) {
 				List<Integer> currentList = new ArrayList<Integer>(result.get(j));
 				currentList.add(nums[i]);
@@ -166,5 +165,67 @@ public class Revision {
 		return result;
 
 	}
+
+	public void permutations(String up, String p) {
+
+		if (up.isEmpty()) {
+			System.out.println(p);
+			return;
+		}
+		char ch = up.charAt(0);
+		for (int i = 0; i <= p.length(); i++) {
+			String first = p.substring(0, i);
+			String second = p.substring(i, p.length());
+			permutations(up.substring(1), first + ch + second);
+
+		}
+
+	}
+
+	public List<String> permutationsArray(String up, String p, List<String> list) {
+
+		if (up.isEmpty()) {
+			list.add(p);
+			return list;
+		}
+
+		char ch = up.charAt(0);
+
+		for (int i = 0; i <= p.length(); i++) {
+			String first = p.substring(0, i);
+			String second = p.substring(i, p.length());
+			permutationsArray(up.substring(1), first + ch + second, list);
+		}
+
+		return list;
+
+	}
+	
+	public List<String> permutationsArrayInBody(String up, String p) {
+
+		if (up.isEmpty()) {
+			List<String> list = new ArrayList<String>();
+			list.add(p);
+			return list;
+		}
+
+		char ch = up.charAt(0);
+		
+		List<String> ans = new ArrayList<>();
+
+		for (int i = 0; i <= p.length(); i++) {
+			String first = p.substring(0, i);
+			String second = p.substring(i, p.length());
+			ans.addAll(permutationsArrayInBody(up.substring(1), first + ch + second));
+		}
+
+		return ans;
+
+	}
+	
+	
+	
+	
+	
 
 }
