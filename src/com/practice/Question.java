@@ -127,13 +127,12 @@ public class Question {
 		 * System.out.println(list);
 		 */
 		
-		Subset subset = new Subset();
-		List<List<Integer>> list = subset.findPermutationIntegerRecursion(new int[] {1,3,5});
-
-		for(List<Integer> list1 : list) {
-			System.out.println(list1);
-		}
-
+		/*
+		 * Subset subset = new Subset(); List<List<Integer>> list =
+		 * subset.findPermutationIntegerRecursion(new int[] {1,3,5});
+		 * 
+		 * for(List<Integer> list1 : list) { System.out.println(list1); }
+		 */
 		
 		
 		/*
@@ -173,6 +172,10 @@ public class Question {
 		 * String str = revision.skipApple("MyappleisaappleString");
 		 * System.out.println(str);
 		 */
+		
+		Revision revision = new Revision();
+		List<List<Integer>> list = revision.findPermuationRecursion(new int[] {1,2,3});
+		System.out.println(list);
 		
 		//revision.subsequence("abc", "");
 		 

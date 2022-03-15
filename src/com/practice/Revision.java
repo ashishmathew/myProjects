@@ -3,7 +3,9 @@ package com.practice;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class Revision {
 
@@ -200,7 +202,7 @@ public class Revision {
 		return list;
 
 	}
-	
+
 	public List<String> permutationsArrayInBody(String up, String p) {
 
 		if (up.isEmpty()) {
@@ -210,7 +212,7 @@ public class Revision {
 		}
 
 		char ch = up.charAt(0);
-		
+
 		List<String> ans = new ArrayList<>();
 
 		for (int i = 0; i <= p.length(); i++) {
@@ -222,10 +224,48 @@ public class Revision {
 		return ans;
 
 	}
-	
-	
-	
-	
-	
+
+	// [1 2 3]
+	public List<List<Integer>> findPermuation(int[] nums) {
+		List<List<Integer>> result = new ArrayList<List<Integer>>();// [3 2 1] [2 3 1] [2 1 3]
+		Queue<List<Integer>> permutations = new LinkedList<>();// [2 1][1 2]
+		permutations.add(new ArrayList<Integer>());// []
+		for (int currentNum : nums) {
+			int n = permutations.size();// 1
+			for (int i = 0; i < n; i++) {
+				List<Integer> oldPermutation = permutations.poll();
+				for (int j = 0; j <= oldPermutation.size(); j++) {
+					List<Integer> newPermuation = new ArrayList<>(oldPermutation);// []
+					newPermuation.add(j, currentNum);//
+					if (newPermuation.size() == nums.length)
+						result.add(newPermuation);
+					else
+						permutations.add(newPermuation);
+				}
+			}
+		}
+		return result;
+	}
+
+	public List<List<Integer>> findPermuationRecursion(int[] nums) {
+		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		generatePermutations(nums, 0, result, new ArrayList<>());
+		return result;
+	}
+
+	public void generatePermutations(int[] nums, int index, List<List<Integer>> result,
+			List<Integer> currentPermutation) {
+		// TODO Auto-generated method stub
+		if (index == nums.length) {
+			result.add(currentPermutation);
+		} else {
+			for (int i = 0; i <= currentPermutation.size(); i++) {
+				List<Integer> newPermutation = new ArrayList<Integer>(currentPermutation);
+				newPermutation.add(i, nums[index]);
+				generatePermutations(nums, index + 1, result, newPermutation);
+			}
+		}
+
+	}
 
 }
