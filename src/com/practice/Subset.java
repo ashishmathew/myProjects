@@ -202,12 +202,12 @@ public class Subset {
 		// TODO Auto-generated method stub
 
 		if (index == nums.length) {
-			result.add(currentPermutation);//[3 2 1] [2 3 1]
+			result.add(currentPermutation);// [3 2 1] [2 3 1]
 
 		} else {
 			for (int i = 0; i <= currentPermutation.size(); i++) {
 				List<Integer> newPermutation = new ArrayList<Integer>(currentPermutation);// [2 1]
-				newPermutation.add(i,nums[index]);// [2 3 1]
+				newPermutation.add(i, nums[index]);// [2 3 1]
 				generatePermutation(nums, index + 1, result, newPermutation);
 
 			}
@@ -215,5 +215,131 @@ public class Subset {
 		}
 
 	}
+
+	public List<String> stringPermutation(String str) {
+
+		List<String> permutations = new ArrayList<String>();
+		permutations.add(str);
+		generateStringPermutations(str, 0, permutations);
+		return permutations;
+
+	}
+
+	public void generateStringPermutations(String str, int index, List<String> permutations) {
+		// TODO Auto-generated method stub
+
+		if (index == str.length()) {
+			permutations.add(str);
+		}
+
+		char ch = str.charAt(index);
+		if (Character.isLowerCase(ch))
+			ch = Character.toUpperCase(ch);
+		else
+			ch = Character.toLowerCase(ch);
+
+		// How will I add the new case charater to the string
+
+		// Skip numbers
+
+		generateStringPermutations(str, index + 1, permutations);
+
+	}
+
+	public List<String> findLetterCaseStringPermutations(String str) {
+
+		List<String> permutations = new ArrayList<>();
+
+		if (str == null)
+			return permutations;
+
+		permutations.add(str);
+
+		for (int i = 0; i < str.length(); i++) {
+			if (Character.isLetter(str.charAt(i))) {
+				int n = permutations.size();
+				for (int j = 0; j < n; j++) {
+					char[] chs = permutations.get(j).toCharArray();// 'a''b''7''c'
+					if (Character.isLowerCase(chs[i]))
+						chs[i] = Character.toUpperCase(chs[i]);// 'A''b''7''c'
+					else
+						chs[i] = Character.toLowerCase(chs[i]);
+					permutations.add(String.valueOf(chs));
+				}
+			}
+		}
+
+		return permutations;
+
+	}
+
+	class Parenthesis {
+		String str;
+		int openCount;
+		int closeCount;
+
+		public Parenthesis(String s, int i, int j) {
+			str = s;
+			openCount = i;
+			closeCount = j;
+
+		}
+
+	}
+
+	public List<String> generateValidParentheses(int num) {
+
+		List<String> permutations = new ArrayList<String>();
+		Queue<Parenthesis> queue = new LinkedList<>();
+		queue.add(new Parenthesis("", 0, 0));// ""
+		// =======================================inside the queue
+		// ("()",2,1)
+		// =======================================
+
+		// -----------------------------------------//pop
+		// ("",0,0),("(",1,0),("((",2,0),
+		// -----------------------------------------
+
+		while (!queue.isEmpty()) {
+
+			Parenthesis ps = queue.poll();
+
+			if (ps.openCount == num && ps.closeCount == num)
+				permutations.add(ps.str);
+			else {
+
+				if (ps.openCount < num)
+					queue.add(new Parenthesis(ps.str + "(", ps.openCount + 1, ps.closeCount));
+
+				if (ps.openCount > ps.closeCount)
+					queue.add(new Parenthesis(ps.str + ")", ps.openCount, ps.closeCount + 1));
+			}
+
+		}
+		return permutations;
+
+	}
+	
+	public List<String> generateValidParenthesesRecursion(int num){
+		List<String> permutations = new ArrayList<String>();
+		Parenthesis ps = new Parenthesis("",0,0);
+		helperGenerateValidParenthesesRecursion(permutations,num,ps);
+		return permutations;
+	}
+
+	public void helperGenerateValidParenthesesRecursion(List<String> permutations, int num,
+			Parenthesis ps) {
+		// TODO Auto-generated method stub
+		
+		if (ps.openCount == num && ps.closeCount == num)
+			permutations.add(ps.str);
+		
+		if (ps.openCount < num)
+			helperGenerateValidParenthesesRecursion(permutations, num,new Parenthesis(ps.str + "(", ps.openCount+1, ps.closeCount));
+
+		if (ps.openCount > ps.closeCount)
+			helperGenerateValidParenthesesRecursion(permutations, num,new Parenthesis(ps.str + ")", ps.openCount, ps.closeCount+1));
+	}
+	
 
 }

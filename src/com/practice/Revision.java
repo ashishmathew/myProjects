@@ -268,4 +268,60 @@ public class Revision {
 
 	}
 
+	public List<String> findLetterCaseStringPermutations(String str) {
+		// ad52
+		List<String> permutations = new ArrayList<String>();
+		permutations.add(str); // ad52
+		for (int i = 0; i < str.length(); i++) {
+			if (Character.isLetter(str.charAt(i))) {// a
+				int n = permutations.size();// 1
+				for (int j = 0; j < n; j++) {
+					char[] chs = permutations.get(j).toCharArray();// 'a''d''5''2'
+					if (Character.isLowerCase(chs[i]))
+						chs[i] = Character.toUpperCase(chs[i]);// 'A''d''5''2'
+					else
+						chs[i] = Character.toLowerCase(chs[i]);
+
+					permutations.add(String.valueOf(chs));// Ad52
+
+				}
+			}
+
+		}
+
+		return permutations;
+
+	}
+
+	public List<String> findLetterCaseStringPermutationsRecursion(String str) {
+
+		List<String> permutations = new ArrayList<String>();
+		permutations.add(str);// ad52
+		helperFindPermutations(str, permutations, 0);
+		return permutations;
+
+	}
+
+	public void helperFindPermutations(String str, List<String> permutations, int index) {
+		// TODO Auto-generated method stub
+		if(index == str.length())
+			return;
+		
+		if(Character.isLetter(str.charAt(index))) {
+			int n = permutations.size();// 1
+			for (int j = 0; j < n; j++) { 
+				char[] chs = permutations.get(j).toCharArray();// 'a''d''5''2'
+				if (Character.isLowerCase(chs[index]))
+					chs[index] = Character.toUpperCase(chs[index]);// 'A''d''5''2'
+				else
+					chs[index] = Character.toLowerCase(chs[index]);
+				permutations.add(String.valueOf(chs));//Ad52
+			}
+
+		}
+		
+		helperFindPermutations(str, permutations, index+1);
+	}
+
+
 }

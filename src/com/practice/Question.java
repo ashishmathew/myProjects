@@ -172,12 +172,31 @@ public class Question {
 		 * String str = revision.skipApple("MyappleisaappleString");
 		 * System.out.println(str);
 		 */
-		
-		Revision revision = new Revision();
-		List<List<Integer>> list = revision.findPermuationRecursion(new int[] {1,2,3});
-		System.out.println(list);
-		
+		/*
+		 * Revision revision = new Revision(); List<List<Integer>> list =
+		 * revision.findPermuationRecursion(new int[] {1,2,3});
+		 * System.out.println(list);
+		 */
+		/*
+		 * Subset subset = new Subset(); List<String> permutations =
+		 * subset.findLetterCaseStringPermutations("ab7c");
+		 * System.out.println(permutations);
+		 */
 		//revision.subsequence("abc", "");
+		
+		
+		/*
+		 * Revision revision = new Revision(); List<String> list =
+		 * revision.findLetterCaseStringPermutationsRecursion("ad52");
+		 * System.out.println(list);
+		 */
+		
+		Subset subset = new Subset();
+		List<String> list = subset.generateValidParenthesesRecursion(3);
+		System.out.println(list);
+		 
+		
+		
 		 
 		//revision.subsequenceArray("abc", "", list);
 		/*
