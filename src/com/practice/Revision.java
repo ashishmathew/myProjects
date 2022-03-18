@@ -304,24 +304,89 @@ public class Revision {
 
 	public void helperFindPermutations(String str, List<String> permutations, int index) {
 		// TODO Auto-generated method stub
-		if(index == str.length())
+		if (index == str.length())
 			return;
-		
-		if(Character.isLetter(str.charAt(index))) {
+
+		if (Character.isLetter(str.charAt(index))) {
 			int n = permutations.size();// 1
-			for (int j = 0; j < n; j++) { 
+			for (int j = 0; j < n; j++) {
 				char[] chs = permutations.get(j).toCharArray();// 'a''d''5''2'
 				if (Character.isLowerCase(chs[index]))
 					chs[index] = Character.toUpperCase(chs[index]);// 'A''d''5''2'
 				else
 					chs[index] = Character.toLowerCase(chs[index]);
-				permutations.add(String.valueOf(chs));//Ad52
+				permutations.add(String.valueOf(chs));// Ad52
 			}
 
 		}
-		
-		helperFindPermutations(str, permutations, index+1);
+
+		helperFindPermutations(str, permutations, index + 1);
 	}
 
+	class ParenthesisClass {
+		String str;
+		int openCount;
+		int closeCount;
+
+		public ParenthesisClass(String s, int i, int j) {
+			str = s;
+			openCount = i;
+			closeCount = j;
+		}
+
+	}
+
+	public List<String> generateValidParethesis(int num) {
+		List<String> result = new ArrayList<>();
+		Queue<ParenthesisClass> queue = new LinkedList<>();
+		queue.add(new ParenthesisClass("", 0, 0));
+		while (!queue.isEmpty()) {
+			ParenthesisClass ps = queue.poll();
+			if (ps.closeCount == num && ps.openCount == num)
+				result.add(ps.str);
+			else {
+				if (ps.openCount < num)
+					queue.add(new ParenthesisClass(ps.str + "(", ps.openCount + 1, ps.closeCount));
+				if (ps.openCount > ps.closeCount)
+					queue.add(new ParenthesisClass(ps.str + ")", ps.openCount, ps.closeCount + 1));
+			}
+
+		}
+		return result;
+	}
+	
+	public List<String> generateValidParenthesisRecursion(int num){
+		List<String> result = new ArrayList<String>();
+		helperGenerateValidParenthesis(result,new 
+				ParenthesisClass("", 0, 0),num);
+		return result;
+	}
+
+	public void helperGenerateValidParenthesis(List<String> result, ParenthesisClass ps, int num) {
+		// TODO Auto-generated method stub
+		
+		if(ps.openCount == num && ps.closeCount == num)
+			result.add(ps.str);
+		else {
+			if(ps.openCount < num)
+				helperGenerateValidParenthesis(result,
+						new ParenthesisClass(ps.str + "(", ps.openCount + 1, 
+								ps.closeCount), num);
+			
+			if(ps.openCount > ps.closeCount)
+				helperGenerateValidParenthesis(result,
+						new ParenthesisClass(ps.str + ")", ps.openCount, 
+								ps.closeCount+1), num);
+			
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 
 }

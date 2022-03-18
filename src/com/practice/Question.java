@@ -190,10 +190,27 @@ public class Question {
 		 * revision.findLetterCaseStringPermutationsRecursion("ad52");
 		 * System.out.println(list);
 		 */
+		 
+		/*
+		 * Subset subset = new Subset(); List<String> list =
+		 * subset.generateValidParenthesesRecursion(3); System.out.println(list);
+		 */
+		/*
+		 * Revision revision = new Revision(); List<String> list =
+		 * revision.generateValidParenthesisRecursion(3); System.out.println(list);
+		 */
 		
-		Subset subset = new Subset();
-		List<String> list = subset.generateValidParenthesesRecursion(3);
-		System.out.println(list);
+		
+		/*
+		 * GeneralizedAbbreviation generalizedAbbreviation = new
+		 * GeneralizedAbbreviation(); List<String> result =
+		 * generalizedAbbreviation.generateGeneralizedAbbreviation("code");
+		 * System.out.println("Generalized abbreviation are: " + result);
+		 */
+		 
+		String str = "123";
+		System.out.println(str.contains("+"));
+
 		 
 		
 		

@@ -319,27 +319,27 @@ public class Subset {
 		return permutations;
 
 	}
-	
-	public List<String> generateValidParenthesesRecursion(int num){
+
+	public List<String> generateValidParenthesesRecursion(int num) {
 		List<String> permutations = new ArrayList<String>();
-		Parenthesis ps = new Parenthesis("",0,0);
-		helperGenerateValidParenthesesRecursion(permutations,num,ps);
+		Parenthesis ps = new Parenthesis("", 0, 0);
+		helperGenerateValidParenthesesRecursion(permutations, num, ps);
 		return permutations;
 	}
 
-	public void helperGenerateValidParenthesesRecursion(List<String> permutations, int num,
-			Parenthesis ps) {
+	public void helperGenerateValidParenthesesRecursion(List<String> permutations, int num, Parenthesis ps) {
 		// TODO Auto-generated method stub
-		
+
 		if (ps.openCount == num && ps.closeCount == num)
 			permutations.add(ps.str);
-		
+
 		if (ps.openCount < num)
-			helperGenerateValidParenthesesRecursion(permutations, num,new Parenthesis(ps.str + "(", ps.openCount+1, ps.closeCount));
+			helperGenerateValidParenthesesRecursion(permutations, num,
+					new Parenthesis(ps.str + "(", ps.openCount + 1, ps.closeCount));
 
 		if (ps.openCount > ps.closeCount)
-			helperGenerateValidParenthesesRecursion(permutations, num,new Parenthesis(ps.str + ")", ps.openCount, ps.closeCount+1));
+			helperGenerateValidParenthesesRecursion(permutations, num,
+					new Parenthesis(ps.str + ")", ps.openCount, ps.closeCount + 1));
 	}
-	
 
 }
