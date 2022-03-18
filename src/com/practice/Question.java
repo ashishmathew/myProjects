@@ -2,8 +2,10 @@ package com.practice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -207,13 +209,12 @@ public class Question {
 		 * generalizedAbbreviation.generateGeneralizedAbbreviation("code");
 		 * System.out.println("Generalized abbreviation are: " + result);
 		 */
-		 
-		String str = "123";
-		System.out.println(str.contains("+"));
+		
+		
+		  EvaluateExpression ev = new EvaluateExpression();
+		  List<Integer> result =ev.diffWaysToEvaluateExpression("1+2*3");
+		  System.out.println("Expression evaluations: " + result);
 
-		 
-		
-		
 		 
 		//revision.subsequenceArray("abc", "", list);
 		/*
